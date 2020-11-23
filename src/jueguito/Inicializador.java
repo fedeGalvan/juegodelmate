@@ -40,7 +40,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 
 		// Mostrar la ventana
 		ventana.setVisible(true);
-        ventana.setIconImage(new ImageIcon("src/Resources/Imagenes/IconoJuegoMate.jpg").getImage());
+        ventana.setIconImage(new ImageIcon("Resources/Imagenes/IconoJuegoMate.jpg").getImage());
 
 
 		// Crear un "JComponent" llamado Juego y agregarlo a la ventana

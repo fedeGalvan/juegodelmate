@@ -24,7 +24,7 @@ public class Jugador extends Elementos {
     }
 
     private static File getResource() {
-        return new File("src/Resources/Imagenes/mate.png");
+        return new File("Resources/Imagenes/mate.png");
     }
 
 
