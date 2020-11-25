@@ -3,7 +3,6 @@ package jueguito;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 
 
 public class Juego extends JPanel implements KeyListener, Runnable {
@@ -14,34 +13,49 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     private int vidas;
     private Jugador jugador;
     private Elementos yerba;
-    private Chuker chuker;
-    private Azucar azucar; 
-
+    private Chuker chuker1;
+    private Chuker chuker2;
+    private Chuker chuker3;
+    private Azucar azucar1;
+    private Azucar azucar2;
+    private Azucar azucar3;
+    
+       
+    
     public Juego(int anchoVentana, int altoVentana, int vidas) {
         this.anchoJuego = anchoVentana;
         this.altoJuego = altoVentana;
         this.setVidas(vidas);
-        this.jugador = new Jugador(0, 200, 0, 0, 80, 80, Color.cyan);
-        this.yerba = new Yerba(500, 500, 0, 0, 100, 100,null);
-        this.chuker = new Chuker(200, 200, 0, 0, 200, 200, null);
-        this.azucar = new Azucar(400, 400, 0, 0, 100, 100, null);
+        this.jugador = new Jugador(0, 200, 0, 0, 70, 70, Color.cyan);
+        this.yerba = new Yerba(500, 500, 0, 0, 70, 70, null);
+       
+        this.chuker1 = new Chuker((int)(Math.random()*(anchoVentana)), (int)(Math.random()*(altoVentana)), 0, 0, 150, 150, null);
+        this.chuker2 = new Chuker((int)(Math.random()*(anchoVentana)), (int)(Math.random()*(altoVentana)), 0, 0, 150, 150, null);
+        this.chuker3 = new Chuker((int)(Math.random()*(anchoVentana)), (int)(Math.random()*(altoVentana)), 0, 0, 150, 150, null);
+        this.azucar1 = new Azucar((int)(Math.random()*(anchoVentana)), (int)(Math.random()*(altoVentana)), 0, 0, 80, 80, null);
+        this.azucar2 = new Azucar((int)(Math.random()*(anchoVentana)), (int)(Math.random()*(altoVentana)), 0, 0, 80, 80, null);
+        this.azucar3 = new Azucar((int)(Math.random()*(anchoVentana)), (int)(Math.random()*(altoVentana)), 0, 0, 80, 80, null);
     }
 
-    public Dimension getPreferredSize() {
+
+	public Dimension getPreferredSize() {
         return new Dimension(anchoJuego, altoJuego);
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == 39) {
-            jugador.setVelocidadX(10);
+            jugador.setVelocidadX(5);
         }
         else if (e.getKeyCode() == 37) {
-            jugador.setVelocidadX(-10);
+            jugador.setVelocidadX(-5);
         }
         
         else if (e.getKeyCode() == 40) {
-            jugador.setVelocidadY(10);
+            jugador.setVelocidadY(5);
+        }
+        else if (e.getKeyCode() == 38) {
+            jugador.setVelocidadY(-5);
         }
         jugador.moverse();
     }
@@ -49,14 +63,17 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == 39) {
-            jugador.setVelocidadX(10);
+            jugador.setVelocidadX(5);
         }
         else if (e.getKeyCode() == 37) {
-            jugador.setVelocidadX(-10);
+            jugador.setVelocidadX(-5);
         }
         
         else if (e.getKeyCode() == 40) {
-            jugador.setVelocidadY(10);
+            jugador.setVelocidadY(5);
+        }
+        else if (e.getKeyCode() == 38) {
+            jugador.setVelocidadY(-5);
         }
         
         jugador.moverse();
@@ -71,6 +88,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
             jugador.setVelocidadX(0);
         }
         else if (e.getKeyCode() == 40) {
+            jugador.setVelocidadY(0);
+        }else if (e.getKeyCode() == 38) {
             jugador.setVelocidadY(0);
         }
         
@@ -98,21 +117,23 @@ public class Juego extends JPanel implements KeyListener, Runnable {
         super.paintComponent(g);
         jugador.dibujar(g);
         yerba.dibujar(g);
-        chuker.dibujar(g);
-        azucar.dibujar(g);
+        chuker1.dibujar(g);
+        chuker2.dibujar(g);
+        chuker3.dibujar(g);
+        azucar1.dibujar(g);
+        azucar2.dibujar(g);
+        azucar3.dibujar(g);
     }
     private void actualizarJuego() {
         jugador.moverse();
         yerba.moverse();
-        chuker.update();
-        azucar.update();
+        chuker1.update();
+        chuker2.update();
+        chuker3.update();
+        azucar1.update();
+        azucar2.update();
+        azucar3.update();
     }
-   /* private void actualizarJuego() {
-		verificarEstadoAmbiente();
-		premio.moverse();
-		jugador.moverse();
-		moverEnemigos();
-	}*/
 
 	public int getVidas() {
 		return vidas;

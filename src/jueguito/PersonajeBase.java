@@ -25,22 +25,6 @@ public abstract class PersonajeBase implements CaracteristicasPersonajes {
     @Override
     public abstract void dibujar(Graphics graphics);
 
-   /* public boolean hayColision(CaracteristicasPersonajes caracteristicasPersonajes) {
-        if (Fisicas.hayColision(
-                this.getPosicionX(),
-                this.getPosicionY(),
-                this.getAncho(),
-                this.getLargo(),
-                caracteristicasPersonajes.getPosicionX(),
-                caracteristicasPersonajes.getPosicionY(),
-                caracteristicasPersonajes.getAncho(),
-                caracteristicasPersonajes.getLargo())) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-*/
 
     @Override
     public void moverse() {
