@@ -22,7 +22,7 @@ public class Sonido {
 
     public void setSound(String nombre, String archivo) {
         try {
-            byte[] fileContent = Files.readAllBytes(Paths.get(Sonidos.class.getClassLoader().getResource(archivo).toURI()));
+            byte[] fileContent = Files.readAllBytes(Paths.get(Sonido.class.getClassLoader().getResource(archivo).toURI()));
             sonidos.put(nombre, fileContent);
         } catch (Exception e) {
             throw new RuntimeException("No se pudo encontrar el archivo de sonido: " + archivo);
