@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-//import javax.swing.BoxLayout;
+
 
 public class Inicializador extends JComponent implements KeyListener, Runnable {
 
@@ -43,7 +43,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
         ventana.setResizable(false);
 
 		// Crear un "JComponent" llamado Juego y agregarlo a la ventana
-		Inicio  inicio = new Inicio(anchoVentana, largoVentana); 
+		Inicio  inicio = new Inicio(anchoVentana, largoVentana); 		
 		
 		//Boton de START:
 		JButton button = new JButton("Button1");
@@ -80,9 +80,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 			inicio.setVisible(false);
 			juego.setVisible(true);
 			ventana.addKeyListener(juego);
-			// Agregar enemigos al juego
-		//	agregarEnemigos(juego, enemigosPorLinea, filasDeEnemigos);
-
+		
 			// Achicar la ventana lo maximo posible para que entren los componentes
 			ventana.pack();
 
@@ -129,29 +127,9 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 		
 		});
 	}
-	/*
-	private static void agregarEnemigos(Juego juego, int enemigosPorLinea, int filasDeEnemigos) {
-		for (int x = 1; x < enemigosPorLinea; x++) {
-			for (int y = 1; y < filasDeEnemigos; y++) {
-				Color color = new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
-				juego.agregarEnemigoAuto(new EnemigoAuto(0 + x * 200, 120 + y * 30, 0.5, 0, 60, 30, color));
-				juego.agregarEnemigoSerpiente(new EnemigoSerpiente(0 + x * 200, 300 + y * 30, 0.5, 0, 60, 30, color));
-				juego.agregarEnemigoAuto(new EnemigoAuto(0 + x * 200, 480 + y * 30, 0.5, 0, 60, 30, color));
-			}
-		}
-		for (int x = 1; x <  enemigosPorLinea; x++) {
-			for (int y = 1; y < filasDeEnemigos; y++) {
-				Color color = new Color(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
-				juego.agregarEnemigoCamion(new EnemigoCamion(0 + x * 200, 220 + y * 30, -0.5, 0, 60, 30, color));            
-				juego.agregarEnemigoCamion(new EnemigoCamion(0 + x * 200, 380 + y * 30, -0.5, 0, 60, 30, color));
-			}
-		}
-		for (int x = 1; x < enemigosPorLinea; x++) {
-			for (int y = 1; y < filasDeEnemigos; y++) {
-				juego.agregarRanitas(new Ranitas(-45+ x * 130, 30 + y * 30, -1, 0, 40, 40, Color.green));            
-			}
-		}
-	} */
+
+
+
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		if (arg0.getKeyCode() == 38) {
