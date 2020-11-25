@@ -35,6 +35,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 		ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		// Abrir la ventana en el centro de la pantalla
+		ventana.pack();
 		ventana.setLocationRelativeTo(null);
 
 		// Mostrar la ventana

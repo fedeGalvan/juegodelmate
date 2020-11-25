@@ -28,7 +28,8 @@ public class Sonido {
             throw new RuntimeException("No se pudo encontrar el archivo de sonido: " + archivo);
         }
     }
-    // toca un sonido del mapa de sonidos
+
+    
     public void tocarSonido(String sonido) {
         try {
             byte[] sonidoEnBytes = sonidos.get(sonido);

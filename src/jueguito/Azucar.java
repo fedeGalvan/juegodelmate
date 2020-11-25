@@ -6,29 +6,26 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import jueguito.Inicializador;
 import javax.imageio.ImageIO;
 
 public class Azucar extends Elementos {
-    private BufferedImage img;
-    int velocidad = 5;
+	private BufferedImage img;
+	int velocidad = (int) (Math.random() * 10 + 1);
 
 	public Azucar(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
 		super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
-		// TODO Auto-generated constructor stub
-		
-		String path = Paths.get(Azucar.getResource().getPath())
-                .toString();
-        try {
-            this.img = ImageIO.read(new File(path));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+		String path = Paths.get(Azucar.getResource().getPath()).toString();
+		try {
+			this.img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
-	
-	  private static File getResource() {
-	        return new File("Resources/Imagenes/azucar.png");
-	    }
+
+	private static File getResource() {
+		return new File("Resources/Imagenes/azucar.png");
+	}
 
 	@Override
 	public boolean hayColision(CaracteristicasPersonajes caracteristicasPersonajes) {
@@ -44,21 +41,32 @@ public class Azucar extends Elementos {
 
 	@Override
 	public void dibujar(Graphics graphics) {
-        try {
-            graphics.drawImage(img, getPosicionX(), getPosicionY(), this.getAncho(), this.getLargo(), null);
-        } catch (Exception e1) {
-            throw new RuntimeException(e1);
-        }
-    }
-
+		try {
+			graphics.drawImage(img, getPosicionX(), getPosicionY(), this.getAncho(), this.getLargo(), null);
+		} catch (Exception e1) {
+			throw new RuntimeException(e1);
+		}
+	}
 
 	public void update() {
-		posicionY+= velocidad;
-		if(posicionY > Inicializador.largoVentana-30) {
-			velocidad = -5;
-		}
-		if (posicionY < 0) {
-			velocidad = 5;
+		int numero = (int) (Math.random() * 100);
+
+		if (numero % 2 == 0) {
+			posicionX += velocidad;
+			if (posicionX > Inicializador.anchoVentana - 30) {
+				posicionX = -300;
+			}
+			if (posicionX < 0) {
+				velocidad = (int) (Math.random() * 10 + 1);
+			}
+		} else {
+			posicionY += velocidad;
+			if (posicionY > Inicializador.largoVentana - 30) {
+				posicionY = -300;
+			}
+			if (posicionY < 0) {
+				velocidad = (int) (Math.random() * 10 + 1);
+			}
 		}
 	}
 
