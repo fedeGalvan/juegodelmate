@@ -4,8 +4,8 @@ import java.awt.*;
 
 public abstract class PersonajeBase implements CaracteristicasPersonajes {
 
-    private int posicionX;
-    private int posicionY;
+    protected int posicionX;
+    protected int posicionY;
     private int velocidadX;
     private int velocidadY;
     private int ancho;

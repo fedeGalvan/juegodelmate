@@ -15,10 +15,10 @@ import javax.swing.WindowConstants;
 public class Inicializador extends JComponent implements KeyListener, Runnable {
 
 	private static final long serialVersionUID = 1L;
+	public static int anchoVentana = 1080;
+	public static int largoVentana = 600;
 	public static void main(String[] args) {
 		
-		int anchoVentana = 1080;
-		int largoVentana = 600;
 		int tiempoDeEsperaEntreActualizaciones = 5;
 		
 	//	int enemigosPorLinea = 5;
