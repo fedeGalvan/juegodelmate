@@ -15,14 +15,13 @@ import javax.swing.WindowConstants;
 public class Inicializador extends JComponent implements KeyListener, Runnable {
 
 	private static final long serialVersionUID = 1L;
-	public static int anchoVentana = 1080;
-	public static int largoVentana = 600;
+	public static int anchoVentana = 1058;
+	public static int largoVentana = 650;
 	public static void main(String[] args) {
 		
 		int tiempoDeEsperaEntreActualizaciones = 5;
 		
-	//	int enemigosPorLinea = 5;
-		//int filasDeEnemigos = 2;
+
 
 		// Activar aceleracion de graficos en 2 dimensiones
 		System.setProperty("sun.java2d.opengl", "true");
@@ -41,7 +40,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 		// Mostrar la ventana
 		ventana.setVisible(true);
         ventana.setIconImage(new ImageIcon("Resources/Imagenes/IconoJuegoMate.jpg").getImage());
-
+        ventana.setResizable(false);
 
 		// Crear un "JComponent" llamado Juego y agregarlo a la ventana
 		Inicio  inicio = new Inicio(anchoVentana, largoVentana); 
