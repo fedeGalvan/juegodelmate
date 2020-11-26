@@ -37,13 +37,21 @@ public class Jugador extends Elementos {
         }
     }
 
+    // Metodo que detecta colisiones
     @Override
-    public boolean hayColision(CaracteristicasPersonajes caracteristicasPersonajes) {
-        return false;
-    }
+	public boolean hayColision(CaracteristicasPersonajes elemento) {
+		if (this.getPosicionX() + 40 < elemento.getPosicionX() + elemento.getAncho() &&
+				this.getPosicionX() + this.getAncho() > elemento.getPosicionX() + 40 &&
+				this.getPosicionY() + 40 < elemento.getPosicionY() + elemento.getLargo() &&
+				this.getLargo() + this.getPosicionY() > elemento.getPosicionY() + 40) {
+			return true;
+		}
+		return false;
+	}
 
     @Override
     public void destruirse(Graphics graphics) {
 
     }
+
 }
