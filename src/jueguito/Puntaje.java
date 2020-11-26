@@ -32,7 +32,7 @@ public class Puntaje {
 	        puntaje--;
 	    }
 
-	    public int getVidas() {
+	    public int getPuntaje() {
 	        return puntaje;
 	    }
 

@@ -192,6 +192,11 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		if (jugador.hayColision(yerba)) {
 			yerba = new Yerba((int) (Math.random() * (anchoJuego) - 20), (int) (Math.random() * (altoJuego) - 20), 0, 0,
 					70, 70, null);
+			
+			if(puntaje.getPuntaje() >= 1000) {
+				puntaje = new Puntaje(50, 25, new Font("Rubik", 15, 20), Color.blue, 0);
+			}
+			
 			puntaje.ganarPuntaje();
 			sonido.tocarSonido("ruidomate");
 		}
