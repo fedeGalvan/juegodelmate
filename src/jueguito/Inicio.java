@@ -24,8 +24,18 @@ public class Inicio extends JPanel implements KeyListener, Runnable {
 	public Inicio(int anchoJuego, int largoJuego) {
 		this.anchoJuego = anchoJuego;
 		this.largoJuego = largoJuego;
-		cancionDeFondo();
+		cargarSonidos();
 		sonido.tocarSonido("sound");
+	}
+
+	private void cargarSonidos() {
+		try {
+			sonido = new Sonido();
+			sonido.agregarSonido("sound", "Resources/Sonidos/sound.wav");
+		} catch (Exception e1) {
+			throw new RuntimeException(e1);
+		}
+		
 	}
 
 	public Dimension getPreferredSize() {
@@ -39,16 +49,7 @@ public class Inicio extends JPanel implements KeyListener, Runnable {
 		   g.drawImage(img, 0, 0, null);
 	}
 	
-	// Reproduce cancion de fondo
-	private void cancionDeFondo() {
-		try {
-			sonido = new Sonido();
-			sonido.setSound("sound", "Resources/Sonidos/sound.wav");
-		} catch (Exception e1) {
-			throw new RuntimeException(e1);
-		}
-	}
-	
+		
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

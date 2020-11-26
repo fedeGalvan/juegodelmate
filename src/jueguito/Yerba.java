@@ -38,13 +38,11 @@ public class Yerba extends Elementos {
 
 	@Override
 	public boolean hayColision(CaracteristicasPersonajes caracteristicasPersonajes) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void destruirse(Graphics graphics) {
-		// TODO Auto-generated method stub
 
 	}
 }
