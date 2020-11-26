@@ -25,7 +25,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
 		this.altoJuego = altoVentana;
-		this.vidas = new Vidas((anchoVentana / 2) - 50, 25, new Font("Rubik", 15, 20), Color.black, 3);
+		this.vidas = new Vidas((anchoVentana / 2) - 50, 25, new Font("Rubik", 15, 20), Color.green, 3);
 		this.puntaje = new Puntaje(50, 25, new Font("Rubik", 15, 20), Color.red, 0);
 		this.jugador = new Jugador(anchoVentana - 70, altoVentana - 70, 0, 0, 70, 70, null);
 		this.yerba = new Yerba(500, 500, 0, 0, 70, 70, null);
@@ -184,6 +184,12 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 			chuker3 = new Chuker(-600, -600, 0, 0, 150, 150, null);
 			vidas.perderVida();
 			sonido.tocarSonido("saturno");
+			
+			if(vidas.getVidas() == 2) {
+				vidas.setColor(Color.yellow);
+			}else if(vidas.getVidas() == 1) {
+				vidas.setColor(Color.red);
+			}
 		}
 	}
 
@@ -192,11 +198,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		if (jugador.hayColision(yerba)) {
 			yerba = new Yerba((int) (Math.random() * (anchoJuego) - 20), (int) (Math.random() * (altoJuego) - 20), 0, 0,
 					70, 70, null);
-			
-			if(puntaje.getPuntaje() >= 1000) {
-				puntaje = new Puntaje(50, 25, new Font("Rubik", 15, 20), Color.blue, 0);
-			}
-			
+						
 			puntaje.ganarPuntaje();
 			sonido.tocarSonido("ruidomate");
 		}

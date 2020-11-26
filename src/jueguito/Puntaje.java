@@ -35,7 +35,7 @@ public class Puntaje {
 	    public int getPuntaje() {
 	        return puntaje;
 	    }
-
+	    
 		public void ganarPuntaje() {
 			puntaje += 100;			
 		}

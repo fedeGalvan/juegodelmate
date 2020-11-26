@@ -35,4 +35,9 @@ public class Vidas {
 	    public int getVidas() {
 	        return vidas;
 	    }
+
+	    public void setColor(Color colorRecibido) {
+	    	color = colorRecibido;
+	    }
+
 }
