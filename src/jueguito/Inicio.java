@@ -24,8 +24,8 @@ public class Inicio extends JPanel implements KeyListener, Runnable {
 	public Inicio(int anchoJuego, int largoJuego) {
 		this.anchoJuego = anchoJuego;
 		this.largoJuego = largoJuego;
-		//cancionDeFondo();
-		//sonido.tocarSonido("sound");
+		cancionDeFondo();
+		sonido.tocarSonido("sound");
 	}
 
 	public Dimension getPreferredSize() {

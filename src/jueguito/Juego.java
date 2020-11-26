@@ -1,10 +1,12 @@
 package jueguito;
 
 import javax.swing.*;
+
+
 import java.awt.*;
 import java.awt.event.*;
 
-public class Juego extends JPanel implements KeyListener, Runnable {
+public class Juego extends JComponent implements KeyListener, Runnable {
 
 	private static final long serialVersionUID = 1L;
 	private int anchoJuego;
@@ -18,6 +20,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private Azucar azucar1;
 	private Azucar azucar2;
 	private Azucar azucar3;
+
+
 
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
@@ -38,8 +42,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 				80, 80, null);
 		this.azucar3 = new Azucar((int) (Math.random() * (anchoVentana)), (int) (Math.random() * (altoVentana)), 0, 0,
 				80, 80, null);
+		
+		
+	
 
 	}
+	
 
 	public Dimension getPreferredSize() {
 		return new Dimension(anchoJuego, altoJuego);
@@ -57,11 +65,16 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			jugador.setPosicionX(-20);
 		}
 
-		else if (e.getKeyCode() == 40) {
+		if (e.getKeyCode() == 40 && jugador.posicionY < altoJuego) {
 			jugador.setVelocidadY(5);
-		} else if (e.getKeyCode() == 38) {
+		} else if (e.getKeyCode() == 38 && jugador.posicionY > - 40) {
 			jugador.setVelocidadY(-5);
+		} else if (e.getKeyCode() == 38) {
+			jugador.setPosicionY(altoJuego);
+		} else if (e.getKeyCode() == 40) {
+			jugador.setPosicionY(-20);
 		}
+		
 		jugador.moverse();
 	}
 
@@ -77,10 +90,14 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			jugador.setPosicionX(-20);
 		}
 
-		if (e.getKeyCode() == 40) {
+		if (e.getKeyCode() == 40 && jugador.posicionY < altoJuego) {
 			jugador.setVelocidadY(5);
-		} else if (e.getKeyCode() == 38) {
+		} else if (e.getKeyCode() == 38 && jugador.posicionY > - 40) {
 			jugador.setVelocidadY(-5);
+		} else if (e.getKeyCode() == 38) {
+			jugador.setPosicionY(altoJuego);
+		} else if (e.getKeyCode() == 40) {
+			jugador.setPosicionY(-20);
 		}
 
 		jugador.moverse();
@@ -129,6 +146,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		azucar1.dibujar(g);
 		azucar2.dibujar(g);
 		azucar3.dibujar(g);
+
+
 	}
 
 	private void actualizarJuego() {
