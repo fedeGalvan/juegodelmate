@@ -30,16 +30,13 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.jugador = new Jugador(anchoVentana - 70, altoVentana - 70, 0, 0, 70, 70, null);
 		this.yerba = new Yerba(500, 500, 0, 0, 70, 70, null);
 
-		this.chuker1 = new Chuker(-200, -200, 0, 0, 150, 150, null);
-		this.chuker2 = new Chuker(-200, -200, 0, 0, 150, 150, null);
-		this.chuker3 = new Chuker(-200, -200, 0, 0, 150, 150, null);
-		this.azucar1 = new Azucar((int) (Math.random() * (anchoVentana)), (int) (Math.random() * (altoVentana)), 0, 0,
-				80, 80, null);
-		this.azucar2 = new Azucar((int) (Math.random() * (anchoVentana)), (int) (Math.random() * (altoVentana)), 0, 0,
-				80, 80, null);
-		this.azucar3 = new Azucar((int) (Math.random() * (anchoVentana)), (int) (Math.random() * (altoVentana)), 0, 0,
-				80, 80, null);
-		
+		this.chuker1 = new Chuker(-600, -600, 0, 0, 150, 150, null);
+		this.chuker2 = new Chuker(-600, -600, 0, 0, 150, 150, null);
+		this.chuker3 = new Chuker(-600, -600, 0, 0, 150, 150, null);
+		this.azucar1 = new Azucar(-600, -600, 0, 0, 80, 80, null);
+		this.azucar2 = new Azucar(-600, -600, 0, 0, 80, 80, null);
+		this.azucar3 = new Azucar(-600, -600, 0, 0, 80, 80, null);
+
 		cargarSonidos();
 	}
 
@@ -51,7 +48,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}
-		
+
 	}
 
 	public Dimension getPreferredSize() {
@@ -171,7 +168,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private void verificarColisiones() {
 		colisionYerba();
 		colisionEdulcorante();
-
+		colisionAzucar();
 	}
 
 	private void colisionEdulcorante() {
@@ -184,25 +181,40 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 			chuker3 = new Chuker(-600, -600, 0, 0, 150, 150, null);
 			vidas.perderVida();
 			sonido.tocarSonido("saturno");
-			
-			if(vidas.getVidas() == 2) {
+
+			if (vidas.getVidas() == 2) {
 				vidas.setColor(Color.yellow);
-			}else if(vidas.getVidas() == 1) {
+			} else if (vidas.getVidas() == 1) {
 				vidas.setColor(Color.red);
 			}
 		}
 	}
 
 	private void colisionYerba() {
-			
+
 		if (jugador.hayColision(yerba)) {
 			yerba = new Yerba((int) (Math.random() * (anchoJuego) - 20), (int) (Math.random() * (altoJuego) - 20), 0, 0,
 					70, 70, null);
-						
+
 			puntaje.ganarPuntaje();
 			sonido.tocarSonido("ruidomate");
 		}
 
 	}
 
+	private void colisionAzucar() {
+		if (jugador.hayColision(azucar1) || jugador.hayColision(azucar2) || jugador.hayColision(azucar3)) {
+			azucar1 = null;
+			azucar2 = null;
+			azucar3 = null;
+			azucar1 = new Azucar(-600, -600, 0, 0, 100 + (int) (Math.random() * 150), 100 + (int) (Math.random() * 150),
+					null);
+			azucar2 = new Azucar(-600, -600, 0, 0, 100 + (int) (Math.random() * 150), 100 + (int) (Math.random() * 150),
+					null);
+			azucar3 = new Azucar(-600, -600, 0, 0, 100 + (int) (Math.random() * 150), 100 + (int) (Math.random() * 150),
+					null);
+			puntaje.perderPuntaje();
+
+		}
+	}
 }

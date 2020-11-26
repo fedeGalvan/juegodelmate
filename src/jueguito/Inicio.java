@@ -48,8 +48,7 @@ public class Inicio extends JPanel implements KeyListener, Runnable {
 		   super.paintComponent(g);
 		   g.drawImage(img, 0, 0, null);
 	}
-	
-		
+			
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

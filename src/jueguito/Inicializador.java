@@ -25,7 +25,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 		System.setProperty("sun.java2d.opengl", "true");
 
 		// Crear un objeto de tipo JFrame que es la ventana donde va estar el juego
-		JFrame ventana = new JFrame("E L  M A T E  F E L I Z");
+		JFrame ventana = new JFrame("El Juego del Mate");
 		// ventana.setLayout(new BoxLayout(ventana,BoxLayout.Y_AXIS));
 
 		// Cerrar la aplicacion cuando el usuario hace click en la 'X'
