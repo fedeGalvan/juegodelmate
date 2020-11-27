@@ -22,10 +22,11 @@ public class Vidas {
 	        this.vidas = vidas;
 	    }
 
-	    public void dibujar(Graphics g) {
-	        g.setColor(color);
-	        g.setFont(font);
-	        g.drawString("Vidas: " + String.valueOf(vidas), posicionX, posicionY);
+	    public void dibujar(Graphics v) {
+	    	v.fillRect(469,5,101,25);
+	        v.setColor(color);
+	        v.setFont(font);
+	        v.drawString("Vidas: " + String.valueOf(vidas), posicionX, posicionY);
 	    }
 
 	    public void perderVida() {
