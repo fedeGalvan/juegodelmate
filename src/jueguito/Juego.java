@@ -2,8 +2,10 @@ package jueguito;
 
 import javax.swing.*;
 
+
 import java.awt.*;
 import java.awt.event.*;
+
 
 public class Juego extends JComponent implements KeyListener, Runnable {
 
@@ -21,6 +23,8 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private Azucar azucar2;
 	private Azucar azucar3;
 	private Sonido sonido;
+	private PanelImagen panelImagen;
+
 
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
@@ -36,6 +40,8 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.azucar1 = new Azucar(-600, -600, 0, 0, 80, 80, null);
 		this.azucar2 = new Azucar(-600, -600, 0, 0, 80, 80, null);
 		this.azucar3 = new Azucar(-600, -600, 0, 0, 80, 80, null);
+		this.panelImagen = new PanelImagen(0,0, 0, 0, 1058, 650,null);
+
 
 		cargarSonidos();
 	}
@@ -50,7 +56,8 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		}
 
 	}
-
+	
+	
 	public Dimension getPreferredSize() {
 		return new Dimension(anchoJuego, altoJuego);
 	}
@@ -140,6 +147,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		panelImagen.dibujar(g);
 		jugador.dibujar(g);
 		vidas.dibujar(g);
 		puntaje.dibujar(g);
@@ -150,6 +158,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		azucar1.dibujar(g);
 		azucar2.dibujar(g);
 		azucar3.dibujar(g);
+
 
 	}
 
