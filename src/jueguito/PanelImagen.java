@@ -16,7 +16,7 @@ public class PanelImagen extends Elementos {
 	public PanelImagen(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
 		super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
 		try {
-			String path = Paths.get(PanelImagen.class.getClassLoader().getResource("Resources/Imagenes/fondoJuego6.jpg").toURI()).toString();
+			String path = Paths.get(PanelImagen.class.getClassLoader().getResource("Resources/Imagenes/fondoJuego.jpg").toURI()).toString();
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
