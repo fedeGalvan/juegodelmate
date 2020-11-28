@@ -24,6 +24,9 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private Azucar azucar3;
 	private Sonido sonido;
 	private PanelImagen panelImagen;
+	protected boolean pararJuego;
+	private boolean juegoCorriendo;
+
 
 
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
@@ -41,6 +44,8 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.azucar2 = new Azucar(-600, -600, 0, 0, 80, 80, null);
 		this.azucar3 = new Azucar(-600, -600, 0, 0, 80, 80, null);
 		this.panelImagen = new PanelImagen(0,0, 0, 0, 1058, 650,null);
+		this.pararJuego = false;
+		this.juegoCorriendo = true;
 
 
 		cargarSonidos();
@@ -129,7 +134,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 
 	@Override
 	public void run() {
-		while (true) {
+		while (juegoCorriendo)  {
 			actualizarJuego();
 			dibujar();
 			try {
@@ -143,9 +148,22 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private void dibujar() {
 		this.repaint();
 	}
+	
+	private void mostrarMensaje(Graphics g, String mensaje, int x, int y) {
+		this.limpiarPantalla(g);
+		g.setColor(Color.magenta);
+		g.setFont(new Font("Impact", 8, 30));
+		g.drawString(mensaje, x, y);
+	}
+	
+	private void dibujarFinJuego(Graphics g) {
+		mostrarMensaje(g, "GAME OVER ",480, 325);
+	}
+	
 
 	@Override
 	protected void paintComponent(Graphics g) {
+		if (!pararJuego) {
 		super.paintComponent(g);
 		panelImagen.dibujar(g);
 		jugador.dibujar(g);
@@ -158,9 +176,23 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		azucar1.dibujar(g);
 		azucar2.dibujar(g);
 		azucar3.dibujar(g);
-
-
+		
+		}
+		else { 
+			dibujarFinJuego(g);
+			juegoCorriendo = false;
+			
+			
+		}
 	}
+	
+	private void limpiarPantalla(Graphics graphics) {
+		graphics.setColor(Color.black);
+		graphics.fillRect(0, 0, anchoJuego, altoJuego);
+	}
+	
+
+	
 
 	private void actualizarJuego() {
 		jugador.moverse();
@@ -172,6 +204,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		azucar2.update();
 		azucar3.update();
 		verificarColisiones();
+		verificarFinDeJuego();
 	}
 
 	private void verificarColisiones() {
@@ -225,4 +258,15 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 
 		}
 	}
+	
+
+	private void verificarFinDeJuego() {
+		
+		if (vidas.getVidas() == 0) {
+			pararJuego = true;
+			
+		}
+		
+	
+}
 }
