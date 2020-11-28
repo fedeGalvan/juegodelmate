@@ -14,7 +14,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 
-public class Inicio extends JPanel implements KeyListener, Runnable {
+public class Inicio extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private int anchoJuego;
@@ -49,25 +49,5 @@ public class Inicio extends JPanel implements KeyListener, Runnable {
 		   g.drawImage(img, 0, 0, null);
 	}
 			
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-	}
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
 
 }

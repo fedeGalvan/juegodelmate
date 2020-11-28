@@ -11,7 +11,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-public class Inicializador extends JComponent implements KeyListener, Runnable {
+public class Inicializador extends JComponent{
 
 	private static final long serialVersionUID = 1L;
 	public static int anchoVentana = 1058;
@@ -33,7 +33,6 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 
 		// Abrir la ventana en el centro de la pantalla
 		ventana.pack();
-		ventana.setLocationRelativeTo(null);
 
 		// Mostrar la ventana
 		ventana.setVisible(true);
@@ -61,7 +60,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 		inicio.add(button2);
 		ventana.add(inicio);
 		ventana.pack();
-
+		
 		JButton button3 = new JButton("Button3");
 		button3.setText("SALIR");
 		button3.setForeground(Color.white);
@@ -69,7 +68,9 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 		inicio.add(button3);
 		ventana.add(inicio);
 		ventana.pack();
-
+		
+		ventana.setLocationRelativeTo(null);
+		
 		// Accion al apretar start
 		button.addActionListener(e -> {
 			Juego juego = new Juego(anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones);
@@ -112,27 +113,5 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 			ventana.dispose();
 
 		});
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		if (arg0.getKeyCode() == 38) {
-		}
-	}
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		if (arg0.getKeyCode() == 38) {
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		if (arg0.getKeyCode() == 37) {
-		}
-	}
-
-	@Override
-	public void run() {
 	}
 }
