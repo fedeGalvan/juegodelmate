@@ -35,8 +35,7 @@ public class Chuker extends Elementos {
 
 	@Override
 	public void destruirse(Graphics graphics) {
-		// TODO Auto-generated method stub
-
+	
 	}
 
 	@Override

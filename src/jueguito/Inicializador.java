@@ -1,9 +1,6 @@
 package jueguito;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-//import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,7 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-public class Inicializador extends JComponent{
+public class Inicializador extends JComponent {
 
 	private static final long serialVersionUID = 1L;
 	public static int anchoVentana = 1058;
@@ -60,7 +57,7 @@ public class Inicializador extends JComponent{
 		inicio.add(button2);
 		ventana.add(inicio);
 		ventana.pack();
-		
+
 		JButton button3 = new JButton("Button3");
 		button3.setText("SALIR");
 		button3.setForeground(Color.white);
@@ -68,9 +65,9 @@ public class Inicializador extends JComponent{
 		inicio.add(button3);
 		ventana.add(inicio);
 		ventana.pack();
-		
+
 		ventana.setLocationRelativeTo(null);
-		
+
 		// Accion al apretar start
 		button.addActionListener(e -> {
 			Juego juego = new Juego(anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones);
@@ -107,8 +104,7 @@ public class Inicializador extends JComponent{
 			thread.start();
 
 		});
-		
-	
+
 		button3.addActionListener(e -> {
 			ventana.dispose();
 
