@@ -144,7 +144,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.repaint();
 	}
 
-	private void mostrarMensaje(Graphics g) {
+	private void mostrarMensajePerder(Graphics g) {
 		this.limpiarPantalla(g);
 		g.setColor(new Color(23, 232, 218));
 		g.setFont(new Font("Impact", 8, 30));
@@ -152,12 +152,19 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		drawString(g, "GAME OVER", 450, 250);
 		g.setColor(Color.white);
 
+		calcularPuntaje(g);
+		
+		g.setColor(new Color(23, 232, 218));
+		drawString(g, "No agarraste la canarias!", 380, 325);
+		
+	}
+
+	private void calcularPuntaje(Graphics g) {
 		if (puntaje.getPuntaje() >= 999) {
-			drawString(g, ("\nObtuviste " + puntaje.getPuntaje() + "kg de yerba"), 380, 250);
+			drawString(g, ("\nObtuviste " + (Double.valueOf(puntaje.getPuntaje()) / 1000) + "kg de yerba"), 380, 250);
 		} else {
 			drawString(g, ("\nObtuviste " + puntaje.getPuntaje() + "g de yerba"), 380, 250);
 		}
-
 	}
 
 	// Funcion que hace salto de linea
@@ -185,7 +192,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 			azucar3.dibujar(g);
 
 		} else {
-			mostrarMensaje(g);
+			mostrarMensajePerder(g);
 			juegoCorriendo = false;
 		}
 	}
