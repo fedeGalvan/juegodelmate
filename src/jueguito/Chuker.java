@@ -35,7 +35,7 @@ public class Chuker extends Elementos {
 
 	@Override
 	public void destruirse(Graphics graphics) {
-	
+
 	}
 
 	@Override

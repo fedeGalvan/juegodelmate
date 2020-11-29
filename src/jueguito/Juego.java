@@ -2,10 +2,8 @@ package jueguito;
 
 import javax.swing.*;
 
-
 import java.awt.*;
 import java.awt.event.*;
-
 
 public class Juego extends JComponent implements KeyListener, Runnable {
 
@@ -27,8 +25,6 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	protected boolean pararJuego;
 	private boolean juegoCorriendo;
 
-
-
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
 		this.altoJuego = altoVentana;
@@ -43,10 +39,9 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.azucar1 = new Azucar(-600, -600, 0, 0, 80, 80, null);
 		this.azucar2 = new Azucar(-600, -600, 0, 0, 80, 80, null);
 		this.azucar3 = new Azucar(-600, -600, 0, 0, 80, 80, null);
-		this.panelImagen = new PanelImagen(0,0, 0, 0, 1058, 650,null);
+		this.panelImagen = new PanelImagen(0, 0, 0, 0, 1058, 650, null);
 		this.pararJuego = false;
 		this.juegoCorriendo = true;
-
 
 		cargarSonidos();
 	}
@@ -61,8 +56,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		}
 
 	}
-	
-	
+
 	public Dimension getPreferredSize() {
 		return new Dimension(anchoJuego, altoJuego);
 	}
@@ -134,7 +128,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 
 	@Override
 	public void run() {
-		while (juegoCorriendo)  {
+		while (juegoCorriendo) {
 			actualizarJuego();
 			dibujar();
 			try {
@@ -148,59 +142,57 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private void dibujar() {
 		this.repaint();
 	}
-	
+
 	private void mostrarMensaje(Graphics g) {
 		this.limpiarPantalla(g);
 		g.setColor(new Color(23, 232, 218));
 		g.setFont(new Font("Impact", 8, 30));
-		
+
 		drawString(g, "GAME OVER", 450, 250);
 		g.setColor(Color.white);
-		
-		if(puntaje.getPuntaje() >= 999) {
+
+		if (puntaje.getPuntaje() >= 999) {
 			drawString(g, ("\nObtuviste " + puntaje.getPuntaje() + "kg de yerba"), 380, 250);
-		}else {
+		} else {
 			drawString(g, ("\nObtuviste " + puntaje.getPuntaje() + "g de yerba"), 380, 250);
 		}
 
 	}
-	
+
 	// Funcion que hace salto de linea
-    private String drawString(Graphics g, String text, int x, int y) {
-        for (String line : text.split("\n"))
-            g.drawString(line, x, y += g.getFontMetrics().getHeight());
-        
-        return text;
-    }
+	private String drawString(Graphics g, String text, int x, int y) {
+		for (String line : text.split("\n"))
+			g.drawString(line, x, y += g.getFontMetrics().getHeight());
+
+		return text;
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		if (!pararJuego) {
-		super.paintComponent(g);
-		panelImagen.dibujar(g);
-		jugador.dibujar(g);
-		vidas.dibujar(g);
-		puntaje.dibujar(g);
-		yerba.dibujar(g);
-		chuker1.dibujar(g);
-		chuker2.dibujar(g);
-		chuker3.dibujar(g);
-		azucar1.dibujar(g);
-		azucar2.dibujar(g);
-		azucar3.dibujar(g);
-		
-		}
-		else { 
+			super.paintComponent(g);
+			panelImagen.dibujar(g);
+			jugador.dibujar(g);
+			vidas.dibujar(g);
+			puntaje.dibujar(g);
+			yerba.dibujar(g);
+			chuker1.dibujar(g);
+			chuker2.dibujar(g);
+			chuker3.dibujar(g);
+			azucar1.dibujar(g);
+			azucar2.dibujar(g);
+			azucar3.dibujar(g);
+
+		} else {
 			mostrarMensaje(g);
 			juegoCorriendo = false;
 		}
 	}
-	
+
 	private void limpiarPantalla(Graphics graphics) {
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, anchoJuego, altoJuego);
 	}
-	
 
 	private void actualizarJuego() {
 		jugador.moverse();
@@ -266,15 +258,13 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 
 		}
 	}
-	
 
 	private void verificarFinDeJuego() {
-		
+
 		if (vidas.getVidas() == 0) {
 			pararJuego = true;
-			
+
 		}
-		
-	
-}
+
+	}
 }
