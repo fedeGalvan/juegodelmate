@@ -19,9 +19,8 @@ public class Inicializador extends JComponent {
 
 		System.setProperty("sun.java2d.opengl", "true");
 		JFrame ventana = new JFrame("El Juego del Mate");
-	
 		Inicio inicio = new Inicio(anchoVentana, largoVentana, ventana);
-		
+		ventana.setVisible(true);
 
 		// Boton de START:
 		JButton button = new JButton("Button1");
@@ -59,9 +58,6 @@ public class Inicializador extends JComponent {
 			juego.setVisible(true);
 			ventana.addKeyListener(juego);
 
-			// Achicar la ventana lo maximo posible para que entren los componentes
-			ventana.pack();
-
 			// Crear un thread y pasarle como parametro al juego que implementa la interfaz
 			// "Runnable"
 			Thread thread = new Thread(juego);
@@ -76,9 +72,8 @@ public class Inicializador extends JComponent {
 			ventana.add(juego);
 			inicio.setVisible(false);
 			ventana.addKeyListener(juego);
-			// Achicar la ventana lo maximo posible para que entren los componentes
-			ventana.pack();
 
+			
 			// Crear un thread y pasarle como parametro al juego que implementa la interfaz
 			// "Runnable"
 			Thread thread = new Thread(juego);
@@ -89,9 +84,8 @@ public class Inicializador extends JComponent {
 
 		button3.addActionListener(e -> {
 			ventana.dispose();
-
 		});
 		
-		
+		ventana.setLocationRelativeTo(null);
 	}
 }

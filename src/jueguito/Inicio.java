@@ -25,8 +25,6 @@ public class Inicio extends JPanel {
 		cargarSonidos();
 		sonido.tocarSonido("sound");
 		
-		ventana.setVisible(true);
-		ventana.setLocationRelativeTo(null);
 		ventana.pack();
 		ventana.setIconImage(new ImageIcon("Resources/Imagenes/IconoJuegoMate.jpg").getImage());
 		ventana.setResizable(false);
@@ -51,7 +49,7 @@ public class Inicio extends JPanel {
 	Image img = Toolkit.getDefaultToolkit().getImage("Resources/Imagenes/background.jpg");
 	public void paintComponent(Graphics g) {
 		   super.paintComponent(g);
-		   g.drawImage(img, 0, 0, null);
+		   g.drawImage(img, 0, 0, this);
 	}
 			
 
