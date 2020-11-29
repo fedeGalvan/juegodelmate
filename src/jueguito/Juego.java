@@ -155,7 +155,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		calcularPuntaje(g);
 		
 		g.setColor(new Color(23, 232, 218));
-		drawString(g, "No agarraste la canarias!", 380, 325);
+		drawString(g, "\n\nNo agarraste la canarias!", 380, 250);
 		
 	}
 
