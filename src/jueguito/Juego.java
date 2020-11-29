@@ -51,6 +51,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 			sonido = new Sonido();
 			sonido.agregarSonido("ruidomate", "Resources/Sonidos/ruidomate.wav");
 			sonido.agregarSonido("saturno", "Resources/Sonidos/saturno.wav");
+			sonido.agregarSonido("azucar", "Resources/Sonidos/asco.wav");
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}
@@ -255,6 +256,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 			azucar3 = new Azucar(-600, -600, 0, 0, 100 + (int) (Math.random() * 150), 100 + (int) (Math.random() * 150),
 					null);
 			puntaje.perderPuntaje();
+			sonido.tocarSonido("azucar");
 
 		}
 	}
