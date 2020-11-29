@@ -30,6 +30,7 @@ public class Inicializador extends JComponent {
 
 		// Abrir la ventana en el centro de la pantalla
 		ventana.pack();
+		ventana.setLocationRelativeTo(null);
 
 		// Mostrar la ventana
 		ventana.setVisible(true);
@@ -66,7 +67,6 @@ public class Inicializador extends JComponent {
 		ventana.add(inicio);
 		ventana.pack();
 
-		ventana.setLocationRelativeTo(null);
 
 		// Accion al apretar start
 		button.addActionListener(e -> {
