@@ -5,11 +5,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-<<<<<<< HEAD
-=======
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
->>>>>>> main
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -19,13 +16,9 @@ public class Inicio extends JPanel {
 	private int anchoJuego;
 	private int largoJuego;
 	private Sonido sonido;
-<<<<<<< HEAD
 
-	public Inicio(int anchoJuego, int largoJuego) {
-=======
-	
+
 	public Inicio(int anchoJuego, int largoJuego, JFrame ventana) {
->>>>>>> main
 		this.anchoJuego = anchoJuego;
 		this.largoJuego = largoJuego;
 		cargarSonidos();
@@ -55,13 +48,9 @@ public class Inicio extends JPanel {
 	Image img = Toolkit.getDefaultToolkit().getImage("Resources/Imagenes/background.jpg");
 
 	public void paintComponent(Graphics g) {
-<<<<<<< HEAD
+
 		super.paintComponent(g);
-		g.drawImage(img, 0, 0, null);
-=======
-		   super.paintComponent(g);
-		   g.drawImage(img, 0, 0, this);
->>>>>>> main
+		g.drawImage(img, 0, 0, this);
 	}
 
 }
