@@ -149,17 +149,29 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.repaint();
 	}
 	
-	private void mostrarMensaje(Graphics g, String mensaje, int x, int y) {
+	private void mostrarMensaje(Graphics g) {
 		this.limpiarPantalla(g);
-		g.setColor(Color.magenta);
+		g.setColor(new Color(23, 232, 218));
 		g.setFont(new Font("Impact", 8, 30));
-		g.drawString(mensaje, x, y);
+		
+		drawString(g, "GAME OVER", 450, 250);
+		g.setColor(Color.white);
+		
+		if(puntaje.getPuntaje() >= 999) {
+			drawString(g, ("\nObtuviste " + puntaje.getPuntaje() + "kg de yerba"), 380, 250);
+		}else {
+			drawString(g, ("\nObtuviste " + puntaje.getPuntaje() + "g de yerba"), 380, 250);
+		}
+
 	}
 	
-	private void dibujarFinJuego(Graphics g) {
-		mostrarMensaje(g, "GAME OVER ",480, 325);
-	}
-	
+	// Funcion que hace salto de linea
+    private String drawString(Graphics g, String text, int x, int y) {
+        for (String line : text.split("\n"))
+            g.drawString(line, x, y += g.getFontMetrics().getHeight());
+        
+        return text;
+    }
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -179,10 +191,8 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		
 		}
 		else { 
-			dibujarFinJuego(g);
+			mostrarMensaje(g);
 			juegoCorriendo = false;
-			
-			
 		}
 	}
 	
@@ -190,8 +200,6 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, anchoJuego, altoJuego);
 	}
-	
-
 	
 
 	private void actualizarJuego() {
