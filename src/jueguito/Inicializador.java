@@ -2,11 +2,10 @@ package jueguito;
 
 import java.awt.Color;
 
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 public class Inicializador extends JComponent {
 
@@ -18,27 +17,11 @@ public class Inicializador extends JComponent {
 
 		int tiempoDeEsperaEntreActualizaciones = 5;
 
-		// Activar aceleracion de graficos en 2 dimensiones
 		System.setProperty("sun.java2d.opengl", "true");
-
-		// Crear un objeto de tipo JFrame que es la ventana donde va estar el juego
 		JFrame ventana = new JFrame("El Juego del Mate");
-		// ventana.setLayout(new BoxLayout(ventana,BoxLayout.Y_AXIS));
-
-		// Cerrar la aplicacion cuando el usuario hace click en la 'X'
-		ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-		// Abrir la ventana en el centro de la pantalla
-		ventana.pack();
-		ventana.setLocationRelativeTo(null);
-
-		// Mostrar la ventana
-		ventana.setVisible(true);
-		ventana.setIconImage(new ImageIcon("Resources/Imagenes/IconoJuegoMate.jpg").getImage());
-		ventana.setResizable(false);
-
-		// Crear un "JComponent" llamado Juego y agregarlo a la ventana
-		Inicio inicio = new Inicio(anchoVentana, largoVentana);
+	
+		Inicio inicio = new Inicio(anchoVentana, largoVentana, ventana);
+		
 
 		// Boton de START:
 		JButton button = new JButton("Button1");
@@ -66,7 +49,7 @@ public class Inicializador extends JComponent {
 		inicio.add(button3);
 		ventana.add(inicio);
 		ventana.pack();
-
+		
 
 		// Accion al apretar start
 		button.addActionListener(e -> {
@@ -92,7 +75,6 @@ public class Inicializador extends JComponent {
 			Juego juego = new Juego(anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones);
 			ventana.add(juego);
 			inicio.setVisible(false);
-			juego.setVisible(true);
 			ventana.addKeyListener(juego);
 			// Achicar la ventana lo maximo posible para que entren los componentes
 			ventana.pack();
@@ -109,5 +91,7 @@ public class Inicializador extends JComponent {
 			ventana.dispose();
 
 		});
+		
+		
 	}
 }
