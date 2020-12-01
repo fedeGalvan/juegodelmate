@@ -1,6 +1,5 @@
 package jueguito;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,10 +9,9 @@ import javax.imageio.ImageIO;
 
 public class Chuker extends Elementos {
 	private BufferedImage img;
-	int velocidad = 5;
 
-	public Chuker(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
-		super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
+	public Chuker(double posicionX, double posicionY, double velocidadX, double velocidadY) {
+		super(posicionX, posicionY, velocidadX, velocidadY, 120, 150, null);
 
 		String path = Paths.get(Chuker.getResource().getPath()).toString();
 		try {
@@ -21,6 +19,9 @@ public class Chuker extends Elementos {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	public Chuker(){
+		super(Inicializador.anchoVentana-(Math.random()*100), Inicializador.largoVentana+(Math.random()*100), Math.random()*10, Math.random()*10, 80, 80, null);
 	}
 
 	private static File getResource() {
@@ -41,31 +42,9 @@ public class Chuker extends Elementos {
 	@Override
 	public void dibujar(Graphics graphics) {
 		try {
-			graphics.drawImage(img, getPosicionX(), getPosicionY(), this.getAncho(), this.getLargo(), null);
+			graphics.drawImage(img, (int) getPosicionX(), (int) getPosicionY(), this.getAncho(), this.getLargo(), null);
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
-		}
-	}
-
-	public void update() {
-		int numero = (int) (Math.random() * 100);
-
-		if (numero % 2 == 0) {
-			posicionX += velocidad;
-			if (posicionX > Inicializador.anchoVentana - 30) {
-				posicionX = -300;
-			}
-			if (posicionX < 0) {
-				velocidad = (int) (Math.random() * 10 + 1);
-			}
-		} else {
-			posicionY += velocidad;
-			if (posicionY > Inicializador.largoVentana - 30) {
-				posicionY = -300;
-			}
-			if (posicionY < 0) {
-				velocidad = (int) (Math.random() * 10 + 1);
-			}
 		}
 	}
 }

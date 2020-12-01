@@ -1,9 +1,10 @@
 package jueguito;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Juego extends JComponent implements KeyListener, Runnable {
 
@@ -13,103 +14,96 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private Vidas vidas;
 	private Puntaje puntaje;
 	private Jugador jugador;
-	private Elementos yerba;
-	private Chuker chuker1;
-	private Chuker chuker2;
-	private Chuker chuker3;
-	private Azucar azucar1;
-	private Azucar azucar2;
-	private Azucar azucar3;
+	private Elementos yerba;	
 	private Sonido sonido;
 	private PanelImagen panelImagen;
 	protected boolean pararJuego;
 	private boolean juegoCorriendo;
+	private int puntos;
+	private List<Chuker> enemigosDulces = new ArrayList<>();
+	private List<Azucar> enemigosAzucarados = new ArrayList<>();
+	private static final int CANTIDAD_EDULCORANTE = 5;
+	private static final int CANTIDAD_AZUCAR = 6;
+	
+
 
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
 		this.altoJuego = altoVentana;
 		this.vidas = new Vidas((anchoVentana / 2) - 50, 25, new Font("Rubik", 15, 20), Color.green, 3);
 		this.puntaje = new Puntaje(50, 25, new Font("Rubik", 15, 20), Color.red, 0);
-		this.jugador = new Jugador(anchoVentana - 70, altoVentana - 70, 0, 0, 70, 70, null);
+		this.jugador = new Jugador(anchoVentana - 70, altoVentana - 70, 0, 0, 70, 70, null);		
 		this.yerba = new Yerba(500, 500, 0, 0, 70, 70, null);
-
-		this.chuker1 = new Chuker(-600, -600, 0, 0, 150, 150, null);
-		this.chuker2 = new Chuker(-600, -600, 0, 0, 150, 150, null);
-		this.chuker3 = new Chuker(-600, -600, 0, 0, 150, 150, null);
-		this.azucar1 = new Azucar(-600, -600, 0, 0, 80, 80, null);
-		this.azucar2 = new Azucar(-600, -600, 0, 0, 80, 80, null);
-		this.azucar3 = new Azucar(-600, -600, 0, 0, 80, 80, null);
-		this.panelImagen = new PanelImagen(0, 0, 0, 0, 1058, 650, null);
+		this.panelImagen = new PanelImagen(0,0, 0, 0, 1058, 650,null);
 		this.pararJuego = false;
-		this.juegoCorriendo = true;
-
+		this.juegoCorriendo = true;		
+		cargarEnemigos();
 		cargarSonidos();
 	}
+	
+	private void cargarEnemigos() {
+		for(int i=0; i < CANTIDAD_EDULCORANTE; i++) {
+			if(Math.random()*5 <= 2.5) {
+			    enemigosDulces.add(new Chuker(anchoJuego+50, Math.random()*altoJuego, Math.random()*10*-1, Math.random()*5));
+			} else {
+				enemigosDulces.add(new Chuker(Math.random()*anchoJuego, altoJuego+50, Math.random()*5, Math.random()*10*-1));
+			}
+		}
+		for(int i=0; i < CANTIDAD_AZUCAR; i++) {
+			if(Math.random()*5 <= 2.5) { 
+			    enemigosAzucarados.add(new Azucar(anchoJuego+50, Math.random()*altoJuego,  Math.random()*10*-1, Math.random()*5));
+			} else {
+				enemigosAzucarados.add(new Azucar(Math.random()*anchoJuego, altoJuego+50,  Math.random()*5, Math.random()*10*-1));
+			}
+		}
+	}
+	
 
 	private void cargarSonidos() {
 		try {
 			sonido = new Sonido();
 			sonido.agregarSonido("ruidomate", "Resources/Sonidos/ruidomate.wav");
-			sonido.agregarSonido("saturno", "Resources/Sonidos/saturno.wav");
+			sonido.agregarSonido("saturno", "Resources/Sonidos/saturno.wav"); 
 			sonido.agregarSonido("azucar", "Resources/Sonidos/asco.wav");
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}
-
 	}
-
+	
 	public Dimension getPreferredSize() {
 		return new Dimension(anchoJuego, altoJuego);
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if (e.getKeyCode() == 39 && jugador.posicionX < anchoJuego) {
+		if (e.getKeyCode() == 39) {
 			jugador.setVelocidadX(5);
-		} else if (e.getKeyCode() == 37 && jugador.posicionX > -40) {
+		} 
+		if (e.getKeyCode() == 37) {
 			jugador.setVelocidadX(-5);
-		} else if (e.getKeyCode() == 37) {
-			jugador.setPosicionX(anchoJuego);
-		} else if (e.getKeyCode() == 39) {
-			jugador.setPosicionX(-20);
 		}
-
-		if (e.getKeyCode() == 40 && jugador.posicionY < altoJuego) {
+		if (e.getKeyCode() == 40) {
 			jugador.setVelocidadY(5);
-		} else if (e.getKeyCode() == 38 && jugador.posicionY > -40) {
+		} 
+		if (e.getKeyCode() == 38) {
 			jugador.setVelocidadY(-5);
-		} else if (e.getKeyCode() == 38) {
-			jugador.setPosicionY(altoJuego);
-		} else if (e.getKeyCode() == 40) {
-			jugador.setPosicionY(-20);
 		}
-
-		jugador.moverse();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == 39 && jugador.posicionX < anchoJuego) {
+		if (e.getKeyCode() == 39) {
 			jugador.setVelocidadX(5);
-		} else if (e.getKeyCode() == 37 && jugador.posicionX > -40) {
+		} 
+		if (e.getKeyCode() == 37) {
 			jugador.setVelocidadX(-5);
-		} else if (e.getKeyCode() == 37) {
-			jugador.setPosicionX(anchoJuego);
-		} else if (e.getKeyCode() == 39) {
-			jugador.setPosicionX(-20);
 		}
-
-		if (e.getKeyCode() == 40 && jugador.posicionY < altoJuego) {
+		if (e.getKeyCode() == 40) {
 			jugador.setVelocidadY(5);
-		} else if (e.getKeyCode() == 38 && jugador.posicionY > -40) {
+		} 
+		if (e.getKeyCode() == 38) {
 			jugador.setVelocidadY(-5);
-		} else if (e.getKeyCode() == 38) {
-			jugador.setPosicionY(altoJuego);
-		} else if (e.getKeyCode() == 40) {
-			jugador.setPosicionY(-20);
 		}
-
-		jugador.moverse();
 	}
 
 	@Override
@@ -124,12 +118,11 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 			jugador.setVelocidadY(0);
 		}
 
-		jugador.moverse();
 	}
 
 	@Override
 	public void run() {
-		while (juegoCorriendo) {
+		while (juegoCorriendo)  {
 			actualizarJuego();
 			dibujar();
 			try {
@@ -143,31 +136,20 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private void dibujar() {
 		this.repaint();
 	}
-
-	private void mostrarMensajePerder(Graphics g) {
+	
+	private void mostrarMensaje(Graphics g, String mensaje, int x, int y) {
 		this.limpiarPantalla(g);
-		g.setColor(new Color(23, 232, 218));
+		g.setColor(Color.magenta);
 		g.setFont(new Font("Impact", 8, 30));
-
-		drawString(g, "GAME OVER", 450, 250);
-		g.setColor(Color.white);
-
-		calcularPuntaje(g);
-		
-		g.setColor(new Color(23, 232, 218));
-		drawString(g, "\n\nNo agarraste la canarias!", 380, 250);
-		
+		g.drawString(mensaje, x, y);
 	}
-
-	private void calcularPuntaje(Graphics g) {
-		if (puntaje.getPuntaje() >= 999) {
-			drawString(g, ("\nObtuviste " + (Double.valueOf(puntaje.getPuntaje()) / 1000) + "kg de yerba"), 380, 250);
-		} else {
-			drawString(g, ("\nObtuviste " + puntaje.getPuntaje() + "g de yerba"), 380, 250);
-		}
+	
+	private void dibujarFinJuego(Graphics g) {
+		mostrarMensaje(g, "GAME OVER ",480, 325);
+		drawString(g,("Obtuviste "+ puntaje.getPuntaje()+" puntos"), 380, 250);
 	}
+	
 
-	// Funcion que hace salto de linea
 	private String drawString(Graphics g, String text, int x, int y) {
 		for (String line : text.split("\n"))
 			g.drawString(line, x, y += g.getFontMetrics().getHeight());
@@ -178,41 +160,76 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	@Override
 	protected void paintComponent(Graphics g) {
 		if (!pararJuego) {
-			super.paintComponent(g);
-			panelImagen.dibujar(g);
-			jugador.dibujar(g);
-			vidas.dibujar(g);
-			puntaje.dibujar(g);
-			yerba.dibujar(g);
-			chuker1.dibujar(g);
-			chuker2.dibujar(g);
-			chuker3.dibujar(g);
-			azucar1.dibujar(g);
-			azucar2.dibujar(g);
-			azucar3.dibujar(g);
-
-		} else {
-			mostrarMensajePerder(g);
-			juegoCorriendo = false;
+		super.paintComponent(g);
+		panelImagen.dibujar(g);
+		jugador.dibujar(g);
+		vidas.dibujar(g);
+		puntaje.dibujar(g);
+		yerba.dibujar(g);
+		dibujarEnemigos(g);
+		
+	} else { 
+		dibujarFinJuego(g);
+		juegoCorriendo = false;		
 		}
 	}
-
+	
 	private void limpiarPantalla(Graphics graphics) {
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, anchoJuego, altoJuego);
+	}
+	
+	private void dibujarEnemigos(Graphics g) {				
+		for(int i=0; i < puntos/120; i++) {
+			if (i<enemigosDulces.size()) {
+		enemigosDulces.get(i).dibujar(g);
+			}
+		}
+		for(int i=0; i < puntos/50; i++) {
+			if (i<enemigosAzucarados.size()) {
+			enemigosAzucarados.get(i).dibujar(g);
+			}
+		}
+	}
+
+	private void actualizacionEnemigos() {
+		for(int i=0; i < puntos/120; i++) {
+			if (i<enemigosDulces.size()) {
+		    enemigosDulces.get(i).moverse();
+		    choquesEnemigos(enemigosDulces.get(i));
+			} 			
+		}
+		for(int i=0; i < puntos/50; i++) {
+			if (i<enemigosAzucarados.size()) {
+			enemigosAzucarados.get(i).moverse();
+			choquesEnemigos(enemigosAzucarados.get(i));
+			}
+		}
+		
+	}
+	
+	private void choquesEnemigos(Elementos enemigo) {
+		if(enemigo.getPosicionX() < -enemigo.getAncho()) {
+			enemigo.setVelocidadX(Math.random()*10);
+		} 
+		if(enemigo.getPosicionX() > enemigo.getAncho()+anchoJuego) {
+			enemigo.setVelocidadX(Math.random()*10*-1);
+		} 
+		if(enemigo.getPosicionY() < -enemigo.getLargo()) {
+			enemigo.setVelocidadY(Math.random()*10);
+		} 
+		if(enemigo.getPosicionY() > enemigo.getLargo()+altoJuego) {
+			enemigo.setVelocidadY(Math.random()*10*-1);
+		} 
 	}
 
 	private void actualizarJuego() {
 		jugador.moverse();
 		yerba.moverse();
-		chuker1.update();
-		chuker2.update();
-		chuker3.update();
-		azucar1.update();
-		azucar2.update();
-		azucar3.update();
+		actualizacionEnemigos();
 		verificarColisiones();
 		verificarFinDeJuego();
+		verificacionPersonaje();
 	}
 
 	private void verificarColisiones() {
@@ -220,26 +237,38 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		colisionEdulcorante();
 		colisionAzucar();
 	}
-
-	private void colisionEdulcorante() {
-		if (jugador.hayColision(chuker1) || jugador.hayColision(chuker2) || jugador.hayColision(chuker3)) {
-			chuker1 = null;
-			chuker2 = null;
-			chuker3 = null;
-			chuker1 = new Chuker(-600, -600, 0, 0, 150, 150, null);
-			chuker2 = new Chuker(-600, -600, 0, 0, 150, 150, null);
-			chuker3 = new Chuker(-600, -600, 0, 0, 150, 150, null);
-			vidas.perderVida();
-			sonido.tocarSonido("saturno");
-
-			if (vidas.getVidas() == 2) {
-				vidas.setColor(Color.yellow);
-			} else if (vidas.getVidas() == 1) {
-				vidas.setColor(Color.red);
-			}
+	
+		
+	private void verificacionPersonaje() {
+		if(jugador.getPosicionY() > altoJuego) {
+			jugador.setPosicionY(-jugador.getLargo());
+		}
+		if(jugador.getPosicionY() < -jugador.getLargo()) {
+			jugador.setPosicionY(altoJuego);
+		}
+		if(jugador.getPosicionX() > anchoJuego) {
+			jugador.setPosicionX(-jugador.getAncho());
+		}
+		if(jugador.getPosicionX() < -jugador.getAncho()) {
+			jugador.setPosicionX(anchoJuego);
 		}
 	}
-
+	
+	private void colisionEdulcorante() {
+		for(int i=0; i < enemigosDulces.size(); i++) {			
+			if (jugador.hayColision(enemigosDulces.get(i))) {	
+			vidas.perderVida();
+			enemigosDulces.remove(i);
+			sonido.tocarSonido("saturno");
+			}
+		}
+		if (vidas.getVidas() == 2) {
+			vidas.setColor(Color.yellow);
+		} else if (vidas.getVidas() == 1) {
+			vidas.setColor(Color.red);
+		}
+	}
+	
 	private void colisionYerba() {
 
 		if (jugador.hayColision(yerba)) {
@@ -247,33 +276,26 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 					70, 70, null);
 			puntaje.ganarPuntaje();
 			sonido.tocarSonido("ruidomate");
+			puntos+=25;
 		}
 
 	}
 
 	private void colisionAzucar() {
-		if (jugador.hayColision(azucar1) || jugador.hayColision(azucar2) || jugador.hayColision(azucar3)) {
-			azucar1 = null;
-			azucar2 = null;
-			azucar3 = null;
-			azucar1 = new Azucar(-600, -600, 0, 0, 100 + (int) (Math.random() * 150), 100 + (int) (Math.random() * 150),
-					null);
-			azucar2 = new Azucar(-600, -600, 0, 0, 100 + (int) (Math.random() * 150), 100 + (int) (Math.random() * 150),
-					null);
-			azucar3 = new Azucar(-600, -600, 0, 0, 100 + (int) (Math.random() * 150), 100 + (int) (Math.random() * 150),
-					null);
+		for(int i=0; i < enemigosAzucarados.size(); i++) {			
+			if (jugador.hayColision(enemigosAzucarados.get(i))) {
 			puntaje.perderPuntaje();
+			enemigosAzucarados.remove(i);
 			sonido.tocarSonido("azucar");
-
+			}
 		}
 	}
-
+	
 	private void verificarFinDeJuego() {
-
+		
 		if (vidas.getVidas() == 0) {
 			pararJuego = true;
-
-		}
-
-	}
+			
+		}	
+}
 }

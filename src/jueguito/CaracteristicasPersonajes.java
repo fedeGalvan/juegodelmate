@@ -5,17 +5,17 @@ import java.awt.Graphics;
 
 public interface CaracteristicasPersonajes extends Dibujar {
 
-        int getPosicionX();
+        double getPosicionX();
 
-        int getPosicionY();
+        double getPosicionY();
 
         int getAncho();
 
         int getLargo();
 
-        int getVelocidadX();
+        double getVelocidadX();
 
-        int getVelocidadY();
+        double getVelocidadY();
 
         Color getColor();
 

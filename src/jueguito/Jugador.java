@@ -31,7 +31,7 @@ public class Jugador extends Elementos {
     @Override
     public void dibujar(Graphics graphics) {
         try {
-            graphics.drawImage(img, getPosicionX(), getPosicionY(), this.getAncho(), this.getLargo(), null);
+            graphics.drawImage(img, (int)getPosicionX(), (int)getPosicionY(), this.getAncho(), this.getLargo(), null);
         } catch (Exception e1) {
             throw new RuntimeException(e1);
         }
@@ -40,12 +40,13 @@ public class Jugador extends Elementos {
     // Metodo que detecta colisiones
     @Override
 	public boolean hayColision(CaracteristicasPersonajes elemento) {
-		if (this.getPosicionX() + 40 < elemento.getPosicionX() + elemento.getAncho() &&
-				this.getPosicionX() + this.getAncho() > elemento.getPosicionX() + 40 &&
-				this.getPosicionY() + 40 < elemento.getPosicionY() + elemento.getLargo() &&
-				this.getLargo() + this.getPosicionY() > elemento.getPosicionY() + 40) {
+		if (posicionX < elemento.getPosicionX() + elemento.getAncho() &&
+			posicionX + ancho > elemento.getPosicionX() &&
+			posicionY < elemento.getPosicionY() + elemento.getLargo() &&
+			posicionY + largo > elemento.getPosicionY()) {
 			return true;
 		}
+		
 		return false;
 	}
 

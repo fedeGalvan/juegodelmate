@@ -33,7 +33,7 @@ public class Puntaje {
 	}
 
 	public void perderPuntaje() {
-		puntaje -= Math.random() * 200;
+		puntaje -= 50;
 	}
 
 	public int getPuntaje() {
@@ -41,6 +41,6 @@ public class Puntaje {
 	}
 
 	public void ganarPuntaje() {
-		puntaje += Math.random() * 200;
+		puntaje += 25;
 	}
 }

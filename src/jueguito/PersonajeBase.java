@@ -4,15 +4,15 @@ import java.awt.*;
 
 public abstract class PersonajeBase implements CaracteristicasPersonajes {
 
-    protected int posicionX;
-    protected int posicionY;
-    private int velocidadX;
-    private int velocidadY;
-    private int ancho;
-    private int largo;
+    protected double posicionX;
+    protected double posicionY;
+    protected double velocidadX;
+    protected double velocidadY;
+    protected int ancho;
+    protected int largo;
     private Color color;
 
-    public PersonajeBase(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
+    public PersonajeBase(double posicionX, double posicionY, double velocidadX, double velocidadY, int ancho, int largo, Color color) {
         this.posicionX = posicionX;
         this.posicionY = posicionY;
         this.velocidadX = velocidadX;
@@ -27,41 +27,41 @@ public abstract class PersonajeBase implements CaracteristicasPersonajes {
 
 
     @Override
-    public void moverse() {
+    public void moverse() {   	
         posicionX = posicionX + velocidadX;
         posicionY = posicionY + velocidadY;
     }
 
     @Override
-    public int getPosicionX() {
+    public double getPosicionX() {
         return posicionX;
     }
 
     @Override
-    public int getPosicionY() {
+    public double getPosicionY() {
         return posicionY;
     }
 
-    public void setPosicionX(int posicionX) {
+    public void setPosicionX(double posicionX) {
         this.posicionX = posicionX;
     }
 
-    public void setPosicionY(int posicionY) {
+    public void setPosicionY(double posicionY) {
         this.posicionY = posicionY;
     }
-    public int getVelocidadX() {
+    public double getVelocidadX() {
         return velocidadX;
     }
 
-    public void setVelocidadX(int velocidadX) {
+    public void setVelocidadX(double velocidadX) {
         this.velocidadX = velocidadX;
     }
 
-    public int getVelocidadY() {
+    public double getVelocidadY() {
         return velocidadY;
     }
 
-    public void setVelocidadY(int velocidadY) {
+    public void setVelocidadY(double velocidadY) {
         this.velocidadY = velocidadY;
     }
 

@@ -29,7 +29,7 @@ public class Yerba extends Elementos {
 
 	public void dibujar(Graphics graphics) {
 		try {
-			graphics.drawImage(img, getPosicionX(), getPosicionY(), this.getAncho(), this.getLargo(), null);
+			graphics.drawImage(img, (int)getPosicionX(), (int)getPosicionY(), this.getAncho(), this.getLargo(), null);
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}
