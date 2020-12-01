@@ -24,6 +24,8 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private List<Azucar> enemigosAzucarados = new ArrayList<>();
 	private static final int CANTIDAD_EDULCORANTE = 5;
 	private static final int CANTIDAD_AZUCAR = 6;
+	private boolean ganarJuego;
+
 	
 
 
@@ -36,6 +38,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.yerba = new Yerba(500, 500, 0, 0, 70, 70, null);
 		this.panelImagen = new PanelImagen(0,0, 0, 0, 1058, 650,null);
 		this.pararJuego = false;
+		this.ganarJuego = false;
 		this.juegoCorriendo = true;		
 		cargarEnemigos();
 		cargarSonidos();
@@ -139,16 +142,19 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	
 	private void mostrarMensaje(Graphics g, String mensaje, int x, int y) {
 		this.limpiarPantalla(g);
-		g.setColor(Color.magenta);
+		g.setColor(Color.green);
 		g.setFont(new Font("Impact", 8, 30));
 		g.drawString(mensaje, x, y);
 	}
 	
 	private void dibujarFinJuego(Graphics g) {
 		mostrarMensaje(g, "GAME OVER ",480, 325);
-		drawString(g,("Obtuviste "+ puntaje.getPuntaje()+" puntos"), 380, 250);
+		drawString(g,("Obtuviste "+ puntaje.getPuntaje()+" puntos"), 420, 325);
 	}
 	
+	private void dibujarFinJuego2(Graphics g) {
+		mostrarMensaje(g, "Ganaste, salvaste al mate de ser dulce!",300,325);
+	}
 
 	private String drawString(Graphics g, String text, int x, int y) {
 		for (String line : text.split("\n"))
@@ -171,6 +177,13 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	} else { 
 		dibujarFinJuego(g);
 		juegoCorriendo = false;		
+		}
+		
+		if (ganarJuego) {
+			// si el juego esta parado entonces dibujar el fin del juego y cambiar el atributo juegoCorriendo a false
+			dibujarFinJuego2(g);{
+				juegoCorriendo = false;
+			}
 		}
 	}
 	
@@ -292,6 +305,10 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	}
 	
 	private void verificarFinDeJuego() {
+		
+		if (puntaje.getPuntaje() == 500) {
+			ganarJuego = true;
+		}
 		
 		if (vidas.getVidas() == 0) {
 			pararJuego = true;
