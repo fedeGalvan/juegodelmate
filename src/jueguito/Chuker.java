@@ -11,17 +11,13 @@ public class Chuker extends Elementos {
 	private BufferedImage img;
 
 	public Chuker(double posicionX, double posicionY, double velocidadX, double velocidadY) {
-		super(posicionX, posicionY, velocidadX, velocidadY, 120, 150, null);
-
+		super(posicionX, posicionY, velocidadX, velocidadY, 150, 150, null);
 		String path = Paths.get(Chuker.getResource().getPath()).toString();
 		try {
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-	}
-	public Chuker(){
-		super(Inicializador.anchoVentana-(Math.random()*100), Inicializador.largoVentana+(Math.random()*100), Math.random()*10, Math.random()*10, 80, 80, null);
 	}
 
 	private static File getResource() {

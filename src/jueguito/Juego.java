@@ -24,8 +24,6 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private List<Azucar> enemigosAzucarados = new ArrayList<>();
 	private static final int CANTIDAD_EDULCORANTE = 5;
 	private static final int CANTIDAD_AZUCAR = 6;
-	
-
 
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
