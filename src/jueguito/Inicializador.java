@@ -1,8 +1,6 @@
 package jueguito;
 
 import java.awt.Color;
-
-
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -22,7 +20,7 @@ public class Inicializador extends JComponent {
 		Inicio inicio = new Inicio(anchoVentana, largoVentana, ventana);
 		ventana.setVisible(true);
 
-		// Boton de START:
+		// Boton de START: asdasdasd
 		JButton button = new JButton("Button1");
 		button.setText("START");
 		button.setForeground(Color.white);
@@ -68,18 +66,11 @@ public class Inicializador extends JComponent {
 
 		// Accion al apretar instrucciones
 		button2.addActionListener(e -> {
-			Juego juego = new Juego(anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones);
-			ventana.add(juego);
+			Instrucciones instrucciones = new Instrucciones(anchoVentana, largoVentana, ventana);
+			ventana.add(instrucciones);
 			inicio.setVisible(false);
-			ventana.addKeyListener(juego);
-
-			
-			// Crear un thread y pasarle como parametro al juego que implementa la interfaz
-			// "Runnable"
-			Thread thread = new Thread(juego);
-			// Arrancar el juego
-			thread.start();
-
+			Thread thread2 = new Thread(instrucciones);
+			thread2.start();
 		});
 
 		button3.addActionListener(e -> {
