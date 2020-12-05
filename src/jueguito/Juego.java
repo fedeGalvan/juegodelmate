@@ -9,25 +9,25 @@ import java.util.ArrayList;
 public class Juego extends JComponent implements KeyListener, Runnable {
 
 	private static final long serialVersionUID = 1L;
-	private int anchoJuego;
-	private int altoJuego;
 	private Vidas vidas;
 	private Puntaje puntaje;
 	private Jugador jugador;
 	private Elementos yerba;	
 	private Sonido sonido;
 	private PanelImagen panelImagen;
-	protected boolean pararJuego;
-	private boolean juegoCorriendo;
-	private int puntos;
+	private boolean juegoCorriendo, pararJuego;
+	private int puntos, altoJuego, anchoJuego, apariciones=180;
 	private List<Chuker> enemigosDulces = new ArrayList<>();
 	private List<Azucar> enemigosAzucarados = new ArrayList<>();
 	private static final int CANTIDAD_EDULCORANTE = 5;
 	private static final int CANTIDAD_AZUCAR = 6;
+<<<<<<< HEAD
 	private boolean ganarJuego;
 
 	
 
+=======
+>>>>>>> Martin-Resources
 
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
@@ -47,16 +47,16 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private void cargarEnemigos() {
 		for(int i=0; i < CANTIDAD_EDULCORANTE; i++) {
 			if(Math.random()*5 <= 2.5) {
-			    enemigosDulces.add(new Chuker(anchoJuego+50, Math.random()*altoJuego, Math.random()*10*-1, Math.random()*5));
+			    enemigosDulces.add(new Chuker(anchoJuego+(jugador.getAncho()*2), Math.random()*altoJuego, Math.random()*10*-1, Math.random()*5));
 			} else {
-				enemigosDulces.add(new Chuker(Math.random()*anchoJuego, altoJuego+50, Math.random()*5, Math.random()*10*-1));
+				enemigosDulces.add(new Chuker(Math.random()*anchoJuego, altoJuego+(jugador.getLargo()*2), Math.random()*5, Math.random()*10*-1));
 			}
 		}
 		for(int i=0; i < CANTIDAD_AZUCAR; i++) {
 			if(Math.random()*5 <= 2.5) { 
-			    enemigosAzucarados.add(new Azucar(anchoJuego+50, Math.random()*altoJuego,  Math.random()*10*-1, Math.random()*5));
+			    enemigosAzucarados.add(new Azucar(anchoJuego+(jugador.getAncho()*2), Math.random()*altoJuego,  Math.random()*10*-1, Math.random()*5));
 			} else {
-				enemigosAzucarados.add(new Azucar(Math.random()*anchoJuego, altoJuego+50,  Math.random()*5, Math.random()*10*-1));
+				enemigosAzucarados.add(new Azucar(Math.random()*anchoJuego, altoJuego+(jugador.getLargo()*2),  Math.random()*5, Math.random()*10*-1));
 			}
 		}
 	}
@@ -216,12 +216,12 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	}
 	
 	private void dibujarEnemigos(Graphics g) {				
-		for(int i=0; i < puntos/120; i++) {
+		for(int i=0; i < puntos/apariciones; i++) {
 			if (i<enemigosDulces.size()) {
 		enemigosDulces.get(i).dibujar(g);
 			}
 		}
-		for(int i=0; i < puntos/50; i++) {
+		for(int i=0; i < puntos/apariciones*0.8; i++) {
 			if (i<enemigosAzucarados.size()) {
 			enemigosAzucarados.get(i).dibujar(g);
 			}
@@ -229,13 +229,13 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	}
 
 	private void actualizacionEnemigos() {
-		for(int i=0; i < puntos/120; i++) {
+		for(int i=0; i < puntos/apariciones; i++) {
 			if (i<enemigosDulces.size()) {
 		    enemigosDulces.get(i).moverse();
 		    choquesEnemigos(enemigosDulces.get(i));
 			} 			
 		}
-		for(int i=0; i < puntos/50; i++) {
+		for(int i=0; i < puntos/apariciones*0.8; i++) {
 			if (i<enemigosAzucarados.size()) {
 			enemigosAzucarados.get(i).moverse();
 			choquesEnemigos(enemigosAzucarados.get(i));

@@ -1,7 +1,10 @@
 package jueguito;
 
 import java.awt.Color;
+<<<<<<< HEAD
 
+=======
+>>>>>>> Martin-Resources
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -21,7 +24,7 @@ public class Inicializador extends JComponent {
 		Inicio inicio = new Inicio(anchoVentana, largoVentana, ventana);
 		ventana.setVisible(true);
 
-		// Boton de START:
+		// Boton de START: asdasdasd
 		JButton button = new JButton("Button1");
 		button.setText("START");
 		button.setForeground(Color.white);
@@ -66,9 +69,10 @@ public class Inicializador extends JComponent {
 
 		// Accion al apretar instrucciones
 		button2.addActionListener(e -> {
-			Juego juego = new Juego(anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones);
-			ventana.add(juego);
+			Instrucciones instrucciones = new Instrucciones(anchoVentana, largoVentana, ventana);
+			ventana.add(instrucciones);
 			inicio.setVisible(false);
+<<<<<<< HEAD
 			ventana.addKeyListener(juego);
 
 			// Crear un thread y pasarle como parametro al juego que implementa la interfaz
@@ -77,6 +81,10 @@ public class Inicializador extends JComponent {
 			// Arrancar el juego
 			thread.start();
 
+=======
+			Thread thread2 = new Thread(instrucciones);
+			thread2.start();
+>>>>>>> Martin-Resources
 		});
 
 		button3.addActionListener(e -> {
