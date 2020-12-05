@@ -2,7 +2,6 @@ package jueguito;
 
 import java.awt.Color;
 
-
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -48,7 +47,6 @@ public class Inicializador extends JComponent {
 		inicio.add(button3);
 		ventana.add(inicio);
 		ventana.pack();
-		
 
 		// Accion al apretar start
 		button.addActionListener(e -> {
@@ -73,7 +71,6 @@ public class Inicializador extends JComponent {
 			inicio.setVisible(false);
 			ventana.addKeyListener(juego);
 
-			
 			// Crear un thread y pasarle como parametro al juego que implementa la interfaz
 			// "Runnable"
 			Thread thread = new Thread(juego);
@@ -85,7 +82,7 @@ public class Inicializador extends JComponent {
 		button3.addActionListener(e -> {
 			ventana.dispose();
 		});
-		
+
 		ventana.setLocationRelativeTo(null);
 	}
 }

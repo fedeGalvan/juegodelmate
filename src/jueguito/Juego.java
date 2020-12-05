@@ -84,6 +84,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 			jugador.setPosicionY(-20);
 		}
 
+			
 		jugador.moverse();
 	}
 
@@ -108,7 +109,7 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		} else if (e.getKeyCode() == 40) {
 			jugador.setPosicionY(-20);
 		}
-
+		
 		jugador.moverse();
 	}
 
@@ -153,10 +154,10 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		g.setColor(Color.white);
 
 		calcularPuntaje(g);
-		
+
 		g.setColor(new Color(23, 232, 218));
 		drawString(g, "\n\nNo agarraste la canarias!", 380, 250);
-		
+
 	}
 
 	private void calcularPuntaje(Graphics g) {
