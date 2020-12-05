@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public abstract class Elementos extends PersonajeBase {
 
-    public Elementos(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo,
+    public Elementos(double posicionX, double posicionY, double velocidadX, double velocidadY, int ancho, int largo,
                    Color color) {
         super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
     }
