@@ -21,14 +21,9 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 	private List<Azucar> enemigosAzucarados = new ArrayList<>();
 	private static final int CANTIDAD_EDULCORANTE = 5;
 	private static final int CANTIDAD_AZUCAR = 6;
-<<<<<<< HEAD
 	private boolean ganarJuego;
 
 	
-
-=======
->>>>>>> Martin-Resources
-
 	public Juego(int anchoVentana, int altoVentana, int vidas) {
 		this.anchoJuego = anchoVentana;
 		this.altoJuego = altoVentana;
@@ -91,12 +86,9 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		if (e.getKeyCode() == 38) {
 			jugador.setVelocidadY(-5);
 		}
-<<<<<<< HEAD
 
-			
 		jugador.moverse();
-=======
->>>>>>> fb595901f096420e7dc1980d27100f8e285b7d4c
+
 	}
 
 	@Override
@@ -113,11 +105,9 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		if (e.getKeyCode() == 38) {
 			jugador.setVelocidadY(-5);
 		}
-<<<<<<< HEAD
-		
+
 		jugador.moverse();
-=======
->>>>>>> fb595901f096420e7dc1980d27100f8e285b7d4c
+
 	}
 
 	@Override
@@ -155,19 +145,15 @@ public class Juego extends JComponent implements KeyListener, Runnable {
 		this.limpiarPantalla(g);
 		g.setColor(Color.green);
 		g.setFont(new Font("Impact", 8, 30));
-<<<<<<< HEAD
 
 		drawString(g, "GAME OVER", 450, 250);
 		g.setColor(Color.white);
 
-		calcularPuntaje(g);
-
 		g.setColor(new Color(23, 232, 218));
 		drawString(g, "\n\nNo agarraste la canarias!", 380, 250);
 
-=======
 		g.drawString(mensaje, x, y);
->>>>>>> fb595901f096420e7dc1980d27100f8e285b7d4c
+
 	}
 	
 	private void dibujarFinJuego(Graphics g) {
