@@ -66,7 +66,8 @@ public class Instrucciones extends JPanel implements Runnable {
 			Inicio inic = new Inicio(anchoVentana, anchoVentana, ventana);
 			ventana.add(inic);
 			inic.setVisible(true);
-			diapositiva++;
+			this.setVisible(false);
+			
 		}*/
 	}
 	
