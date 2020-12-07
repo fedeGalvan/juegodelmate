@@ -4,12 +4,6 @@
 
 El juego del mate es un juego desarrollado como proyecto final de la materia Paradigmas de programación del IFTS N° 16.
 
-## Diagrama de clases 
-
-![](https://i.ibb.co/TqbLmDj/diagrama-De-Clases.png)
-
-
-
 # Instrucciones
 
 ### Sos el mate y tenés que juntar yerba, cada una te dará 25 puntos, juntá 500 para ganar
