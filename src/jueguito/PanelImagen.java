@@ -1,6 +1,5 @@
 package jueguito;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,8 +12,8 @@ import javax.imageio.ImageIO;
 public class PanelImagen extends Elementos {
 	private BufferedImage img;
 
-	public PanelImagen(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
-		super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
+	public PanelImagen() {
+		super(0,0, 0, 0, 1058, 650);
 		try {
 			String path = Paths.get(PanelImagen.class.getClassLoader().getResource("Resources/Imagenes/fondoJuego.jpg").toURI()).toString();
 			this.img = ImageIO.read(new File(path));

@@ -7,7 +7,6 @@ import java.awt.Graphics;
 
 public class Vidas {
 
-
 	    private int posicionX;
 	    private int posicionY;
 	    private Font font;

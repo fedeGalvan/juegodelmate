@@ -12,7 +12,7 @@ public class Azucar extends Elementos {
 	
 	
 	public Azucar(double posicionX, double posicionY, double velocidadX, double velocidadY) {
-		super(posicionX, posicionY, velocidadX, velocidadY, 80, 80, null);
+		super(posicionX, posicionY, velocidadX, velocidadY, 80, 80);
 
 		String path = Paths.get(Azucar.getResource().getPath()).toString();
 		try {

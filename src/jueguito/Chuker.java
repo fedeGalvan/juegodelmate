@@ -11,7 +11,7 @@ public class Chuker extends Elementos {
 	private BufferedImage img;
 
 	public Chuker(double posicionX, double posicionY, double velocidadX, double velocidadY) {
-		super(posicionX, posicionY, velocidadX, velocidadY, 150, 150, null);
+		super(posicionX, posicionY, velocidadX, velocidadY, 50, 140);
 		String path = Paths.get(Chuker.getResource().getPath()).toString();
 		try {
 			this.img = ImageIO.read(new File(path));
