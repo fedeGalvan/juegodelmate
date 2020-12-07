@@ -10,16 +10,14 @@ public abstract class PersonajeBase implements CaracteristicasPersonajes {
     protected double velocidadY;
     protected int ancho;
     protected int largo;
-    private Color color;
 
-    public PersonajeBase(double posicionX, double posicionY, double velocidadX, double velocidadY, int ancho, int largo, Color color) {
+    public PersonajeBase(double posicionX, double posicionY, double velocidadX, double velocidadY, int ancho, int largo) {
         this.posicionX = posicionX;
         this.posicionY = posicionY;
         this.velocidadX = velocidadX;
         this.velocidadY = velocidadY;
         this.ancho = ancho;
         this.largo = largo;
-        this.color = color;
     }
 
     @Override
@@ -75,11 +73,6 @@ public abstract class PersonajeBase implements CaracteristicasPersonajes {
         return largo;
     }
 
-    @Override
-    public Color getColor() {
-        return color;
-    }
-
     public void setAncho(int ancho) {
         this.ancho = ancho;
     }
@@ -88,10 +81,7 @@ public abstract class PersonajeBase implements CaracteristicasPersonajes {
         this.largo = largo;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
+ 
     public void rebotarEnEjeX() {
 
     }

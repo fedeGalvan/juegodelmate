@@ -1,7 +1,6 @@
 package jueguito;
 
 import javax.imageio.ImageIO;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,8 +11,8 @@ public class Jugador extends Elementos {
 
     private BufferedImage img;
 
-    public Jugador(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
-        super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
+    public Jugador(int posicionX, int posicionY, int velocidadX, int velocidadY) {
+        super(posicionX, posicionY, velocidadX, velocidadY, 70, 70);
         String path = Paths.get(Jugador.getResource().getPath())
                 .toString();
         try {

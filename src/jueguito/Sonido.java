@@ -31,6 +31,8 @@ public class Sonido {
 		}
 	}
 
+	
+
 	// toca un sonido del mapa de sonidos
 	public void tocarSonido(String sonido) {
 		try {

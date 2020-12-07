@@ -1,6 +1,5 @@
 package jueguito;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 public interface CaracteristicasPersonajes extends Dibujar {
@@ -17,8 +16,6 @@ public interface CaracteristicasPersonajes extends Dibujar {
 
         double getVelocidadY();
 
-        Color getColor();
-
         @Override
         void dibujar(Graphics graphics);
 
@@ -26,7 +23,5 @@ public interface CaracteristicasPersonajes extends Dibujar {
 
         boolean hayColision(CaracteristicasPersonajes caracteristicasPersonajes);
 
-        void rebotarEnEjeX();
 
-        void rebotarEnEjeY();
 }

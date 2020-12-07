@@ -1,6 +1,6 @@
 package jueguito;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,11 +13,11 @@ import javax.imageio.ImageIO;
 public class Yerba extends Elementos {
 	private BufferedImage img;
 
-	public Yerba(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
-		super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
+	public Yerba(int posicionX, int posicionY) {
+		super(posicionX, posicionY, 0, 0, 50, 70);
 
 		try {
-			String path = Paths.get(Jugador.class.getClassLoader().getResource("Resources/Imagenes/yerba2.png").toURI())
+			String path = Paths.get(Jugador.class.getClassLoader().getResource("Resources/Imagenes/yerba.png").toURI())
 					.toString();
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
