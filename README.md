@@ -4,6 +4,11 @@
 
 El juego del mate es un juego desarrollado como proyecto final de la materia Paradigmas de programación del IFTS N° 16.
 
+## Diagrama de clases 
+
+![](https://i.ibb.co/TqbLmDj/diagrama-De-Clases.png)
+
+
 
 # Instrucciones
 
