@@ -16,3 +16,6 @@ El juego del mate es un juego desarrollado como proyecto final de la materia Par
 
 ### El edulcorante es el peor enemigo del mate, si lo agarrás vas a perder una vida
 ![](https://i.ibb.co/Rc1mqm7/Instruc3.png)
+
+### Diagrama de clases
+![](https://i.ibb.co/4Zj2bMN/diagrama-De-Clases.png)
