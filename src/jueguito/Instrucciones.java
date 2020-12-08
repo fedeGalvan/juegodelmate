@@ -46,30 +46,6 @@ public class Instrucciones extends JPanel implements Runnable {
 	}
 	
 	private void dibujarInstrucciones(Graphics g) {
-<<<<<<< HEAD
-		if(diapositiva == 0) {
-			fuenteYTamaño(g);
-			String insc = "Sos el mate y tenés que juntar yerba, cada una te dará 25 puntos, juntá 500 para ganar";
-			g.drawString(insc, anchoVentana/2-(insc.length()*4), largoVentana/2-280);
-		}
-		if(diapositiva == 1) {
-			fuenteYTamaño(g);
-			String insc = "Cada azúcar te sacará 50 puntos, evitalos para no arruinar el mate";
-			g.drawString(insc, anchoVentana/2-(insc.length()*4), largoVentana/2-280);
-		}
-		if(diapositiva == 2) {
-			fuenteYTamaño(g);
-			String insc = "El edulcorante es el peor enemigo del mate, si lo agarrás vas a perder una vida";
-			g.drawString(insc, anchoVentana/2-(insc.length()*4), largoVentana/2-280);
-		}
-		/*if(diapositiva == 3) {
-			Inicio inic = new Inicio(anchoVentana, anchoVentana, ventana);
-			ventana.add(inic);
-			inic.setVisible(true);
-			this.setVisible(false);
-			
-		}*/
-=======
 		if (diapositiva<listaDeImagenes.size()) {
 			int anchoString = anchoVentana/2 - (listaDeInstrucciones.get(diapositiva).length())*4;
 			g.setColor(Color.green);
@@ -78,7 +54,6 @@ public class Instrucciones extends JPanel implements Runnable {
 			g.drawImage(listaDeImagenes.get(diapositiva), anchoVentana/2-450, largoVentana/2-260, 900, 520, null);
 			diapositiva++;
 		}
->>>>>>> Martin-Resources
 	}
 	
 	private void terminarInstrucciones() {
