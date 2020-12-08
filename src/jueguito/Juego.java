@@ -132,7 +132,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	
 	private void mostrarMensaje(Graphics g, String mensaje, int x, int y) {
 		this.limpiarPantalla(g);
-		g.setColor(Color.magenta);
+		g.setColor(Color.cyan);
 		g.setFont(new Font("Impact", 8, 30));
 		g.drawString(mensaje, x, y);
 	}
